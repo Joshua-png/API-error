@@ -14,7 +14,7 @@ export async function getOpenAIResponse(req, res) {
         messages: [{ role: "user", content: "Hello!" }],
         });
         res.status(200).json({
-            success: true
+            success: true,
             messageContent: response.choices[0].message.content
         })
         

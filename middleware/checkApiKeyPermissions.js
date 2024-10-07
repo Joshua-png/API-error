@@ -10,15 +10,14 @@ const openai = new OpenAI({
 export const checkApiKeyPermissions = async (req, res, next) => {
     try {
       const response = await openai.models.list();
-    //   console.log('API key is valid and has permissions. Available models:', response.data);
       next()
     } catch (error) {
-      if (error.response) {
-        console.error('Error:', error.response.status, error.response.data);
-        if (error.response.status === 401) {
+      console.log(error.status)
+      if (error) {
+        if (error.status == 401) {
             res.status(401).json({
                 success: false,
-                message: 'Unauthorized: Check if the API key is valid and has the correct permissions..',
+                message: 'Unauthorized: Check if the API key is valid and has the correct permissions.',
             });
         } else {
             res.status(400).json({

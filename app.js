@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     res.status(200).send({message: "Hello"})
 })
 
-app.get('/chat/completions',checkApiKeyMiddleware, checkApiKeyPermissions, getOpenAIResponse )
+app.get('/api/v1/chat/completions',checkApiKeyMiddleware, checkApiKeyPermissions, getOpenAIResponse )
 
 app.listen(PORT, () => {
     console.log(`Listening on Port ${PORT}`)
